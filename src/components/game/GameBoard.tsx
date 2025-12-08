@@ -3,6 +3,7 @@ import { Card, generateCards, getGridCols, calculateStars } from '@/lib/gameUtil
 import { GameMode, Difficulty } from '@/hooks/useGameProgress';
 import { MemoryCard } from './MemoryCard';
 import { useSound } from '@/hooks/useSound';
+import { Mascot, getRandomMessage } from './Mascot';
 import { cn } from '@/lib/utils';
 
 interface GameBoardProps {
@@ -18,6 +19,8 @@ export function GameBoard({ mode, difficulty, onComplete, colorClass }: GameBoar
   const [attempts, setAttempts] = useState(0);
   const [isChecking, setIsChecking] = useState(false);
   const [matchedPairs, setMatchedPairs] = useState(0);
+  const [mascotMessage, setMascotMessage] = useState(getRandomMessage('start'));
+  const [mascotMood, setMascotMood] = useState<'happy' | 'excited' | 'thinking' | 'cheering' | 'encouraging'>('happy');
   const { playSound } = useSound();
 
   useEffect(() => {
@@ -27,6 +30,8 @@ export function GameBoard({ mode, difficulty, onComplete, colorClass }: GameBoar
     setAttempts(0);
     setMatchedPairs(0);
     setIsChecking(false);
+    setMascotMessage(getRandomMessage('start'));
+    setMascotMood('happy');
   }, [mode, difficulty]);
 
   const totalPairs = cards.length / 2;
@@ -64,15 +69,25 @@ export function GameBoard({ mode, difficulty, onComplete, colorClass }: GameBoar
             const newMatched = prev + 1;
             if (newMatched === totalPairs) {
               const stars = calculateStars(attempts + 1, totalPairs);
+              setMascotMessage(getRandomMessage('win'));
+              setMascotMood('cheering');
               setTimeout(() => {
                 playSound('win');
                 onComplete(stars, attempts + 1);
               }, 500);
+            } else if (newMatched >= totalPairs - 1) {
+              setMascotMessage(getRandomMessage('fewLeft'));
+              setMascotMood('excited');
+            } else {
+              setMascotMessage(getRandomMessage('match'));
+              setMascotMood('cheering');
             }
             return newMatched;
           });
         } else {
           playSound('noMatch');
+          setMascotMessage(getRandomMessage('noMatch'));
+          setMascotMood('encouraging');
           setCards(prev => prev.map(c => 
             newFlipped.includes(c.id) ? { ...c, isFlipped: false } : c
           ));
@@ -87,6 +102,8 @@ export function GameBoard({ mode, difficulty, onComplete, colorClass }: GameBoar
 
   return (
     <div className="flex flex-col items-center gap-4">
+      <Mascot mood={mascotMood} message={mascotMessage} />
+      
       <div className="flex items-center gap-6 text-lg font-medium">
         <span className="bg-card px-4 py-2 rounded-full shadow-sm">
           Försök: <span className="font-bold text-primary">{attempts}</span>
