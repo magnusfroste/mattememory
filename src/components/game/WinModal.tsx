@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { StarDisplay } from './StarDisplay';
 import { cn } from '@/lib/utils';
@@ -31,8 +31,10 @@ export function WinModal({
   const message = messages[Math.min(stars - 1, messages.length - 1)];
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
+    <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onGoHome(); }}>
       <DialogContent className="sm:max-w-md bg-card border-4 border-primary/20 rounded-2xl">
+        <DialogTitle className="sr-only">Du vann!</DialogTitle>
+        <DialogDescription className="sr-only">Resultat från spelet</DialogDescription>
         <div className="flex flex-col items-center gap-6 py-4">
           {/* Confetti effect */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
