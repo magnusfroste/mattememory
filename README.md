@@ -5,6 +5,8 @@ och rätt antal frukter, en siffra och talordet, eller en addition och dess summ
 
 **Spela:** https://mattememory.skolappar.com · En del av [Skolappar](https://www.skolappar.com) – pedagogiska appar av föräldrar · öppen källkod (MIT)
 
+![Matte-Memory](public/kort.png)
+
 Började som ett Lovable-projekt och körs nu fristående.
 
 ## Vad du kan göra
