@@ -2,11 +2,11 @@
 
 > Mattememory är ett roligt memoryspel som tränar enkel matematik för förskoleklass och lågstadiet. Gratis skolapp.
 
-Mattememory är ett barnvänligt memoryspel på webben som kombinerar klassisk memorymekanik med matematikträning. Appen vänder sig till barn i förskoleklass och lågstadiet (årskurs F–6) samt deras föräldrar och lärare.
+Mattememory är ett barnvänligt memoryspel på webben som kombinerar klassisk memorymekanik med matematikträning. Appen vänder sig till barn i förskoleklass och lågstadiet (årskurs F–3) samt deras föräldrar och lärare.
 
 ## Vad appen gör
 
-- Tre spellägen: Antal (para ihop siffror med antal), Taltvilling (para ihop likadana tal) och Addition (para ihop additionsuppgifter med svar)
+- Tre spellägen: Antal (para ihop siffror med antal), Taltvilling (para ihop siffran med talordet, till exempel 7 och "sju") och Addition (para ihop additionsuppgifter med svar)
 - Tre svårighetsnivåer anpassade efter ålder och förmåga
 - Stjärnprogression som sparas lokalt i webbläsaren – ingen inloggning krävs
 - Ljudeffekter som kan stängas av
@@ -15,7 +15,7 @@ Mattememory är ett barnvänligt memoryspel på webben som kombinerar klassisk m
 
 ## Viktiga länkar
 
-- [Startsida](https://mattememory.lovable.app/)
-- [Spela Antal](https://mattememory.lovable.app/spela/antal)
-- [Spela Taltvilling](https://mattememory.lovable.app/spela/taltvilling)
-- [Spela Addition](https://mattememory.lovable.app/spela/addition)
+- [Startsida](https://mattememory.skolappar.com/)
+- [Spela Antal](https://mattememory.skolappar.com/spela/antal)
+- [Spela Taltvilling](https://mattememory.skolappar.com/spela/taltvilling)
+- [Spela Addition](https://mattememory.skolappar.com/spela/addition)
