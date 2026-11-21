@@ -34,14 +34,18 @@ const numberWords: Record<number, string> = {
   20: 'tjugo',
 };
 
-export function getDifficultyConfig(difficulty: Difficulty): { pairs: number; maxNumber: number } {
+export function getDifficultyConfig(
+  difficulty: Difficulty
+): { pairs: number; maxNumber: number; maxCount: number } {
+  // maxCount är taket för antal-bilder: barn ska kunna räkna på kortet,
+  // därför aldrig fler än 10 föremål (maxNumber gäller tal/ord-lägena).
   switch (difficulty) {
     case 'easy':
-      return { pairs: 3, maxNumber: 5 };
+      return { pairs: 3, maxNumber: 5, maxCount: 5 };
     case 'medium':
-      return { pairs: 6, maxNumber: 10 };
+      return { pairs: 6, maxNumber: 10, maxCount: 8 };
     case 'hard':
-      return { pairs: 8, maxNumber: 20 };
+      return { pairs: 8, maxNumber: 20, maxCount: 10 };
   }
 }
 
@@ -50,9 +54,10 @@ export function generateCards(mode: GameMode, difficulty: Difficulty): Card[] {
   const cards: Card[] = [];
   
   // Generate random unique numbers for this game
+  const tak = mode === 'antal' ? config.maxCount : config.maxNumber;
   const numbers: number[] = [];
   while (numbers.length < config.pairs) {
-    const num = Math.floor(Math.random() * config.maxNumber) + 1;
+    const num = Math.floor(Math.random() * tak) + 1;
     if (!numbers.includes(num)) {
       numbers.push(num);
     }
