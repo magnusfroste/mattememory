@@ -7,7 +7,7 @@ och rätt antal frukter, en siffra och talordet, eller en addition och dess summ
 
 ![Matte-Memory](public/kort.png)
 
-Började som ett Lovable-projekt och körs nu fristående.
+Körs fristående.
 
 ## Vad du kan göra
 
