@@ -5,6 +5,7 @@ import { MemoryCard } from './MemoryCard';
 import { useSound } from '@/hooks/useSound';
 import { Mascot, getRandomMessage } from './Mascot';
 import { cn } from '@/lib/utils';
+import { report } from '@/lib/skolappar';
 
 interface GameBoardProps {
   mode: GameMode;
@@ -73,6 +74,8 @@ export function GameBoard({ mode, difficulty, onComplete, colorClass }: GameBoar
               setMascotMood('cheering');
               setTimeout(() => {
                 playSound('win');
+                // Result: pairs per attempt, 100 when every attempt was a match
+                report('round_done', Math.round((totalPairs / (attempts + 1)) * 100));
                 onComplete(stars, attempts + 1);
               }, 500);
             } else if (newMatched >= totalPairs - 1) {
@@ -86,6 +89,7 @@ export function GameBoard({ mode, difficulty, onComplete, colorClass }: GameBoar
           });
         } else {
           playSound('noMatch');
+          report('hint');
           setMascotMessage(getRandomMessage('noMatch'));
           setMascotMood('encouraging');
           setCards(prev => prev.map(c => 
