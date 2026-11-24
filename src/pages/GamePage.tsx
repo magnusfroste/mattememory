@@ -10,8 +10,15 @@ import { Confetti } from '@/components/game/Confetti';
 import { GameMode, Difficulty, useGameProgress } from '@/hooks/useGameProgress';
 import { useSound } from '@/hooks/useSound';
 import { getModeInfo, getDifficultyInfo } from '@/lib/gameUtils';
+import { report } from '@/lib/skolappar';
 
 const difficulties: Difficulty[] = ['easy', 'medium', 'hard'];
+
+// A new board: a round starts at level 1 (easy), 2 (medium) or 3 (hard)
+const reportRoundStart = (difficulty: Difficulty) => {
+  report('round_start');
+  report('level', difficulties.indexOf(difficulty) + 1);
+};
 
 export default function GamePage() {
   const { mode } = useParams<{ mode: string }>();
@@ -32,6 +39,7 @@ export default function GamePage() {
   const handleDifficultySelect = (difficulty: Difficulty) => {
     playSound('click');
     setSelectedDifficulty(difficulty);
+    reportRoundStart(difficulty);
     setGameKey(prev => prev + 1);
     setShowWinModal(false);
   };
@@ -48,6 +56,7 @@ export default function GamePage() {
   const handlePlayAgain = () => {
     playSound('click');
     setShowWinModal(false);
+    if (selectedDifficulty) reportRoundStart(selectedDifficulty);
     setGameKey(prev => prev + 1);
   };
 
@@ -56,6 +65,7 @@ export default function GamePage() {
     const currentIndex = difficulties.indexOf(selectedDifficulty!);
     if (currentIndex < difficulties.length - 1) {
       setSelectedDifficulty(difficulties[currentIndex + 1]);
+      reportRoundStart(difficulties[currentIndex + 1]);
       setShowWinModal(false);
       setGameKey(prev => prev + 1);
     }
