@@ -3,7 +3,7 @@
 Memory med matte för förskoleklass och lågstadiet. Barnet vänder kort och letar par: en siffra
 och rätt antal frukter, en siffra och talordet, eller en addition och dess summa.
 
-**Spela:** https://mattememory.skolappar.com · En del av [Skolappar](https://www.skolappar.com) – pedagogiska appar av föräldrar · öppen källkod (MIT)
+**Spela:** https://mattememory.skolappar.org · En del av [Skolappar](https://www.skolappar.org) – pedagogiska appar av föräldrar · öppen källkod (MIT)
 
 ![Matte-Memory](public/kort.png)
 

@@ -15,7 +15,7 @@ Mattememory är ett barnvänligt memoryspel på webben som kombinerar klassisk m
 
 ## Viktiga länkar
 
-- [Startsida](https://mattememory.skolappar.com/)
-- [Spela Antal](https://mattememory.skolappar.com/spela/antal)
-- [Spela Taltvilling](https://mattememory.skolappar.com/spela/taltvilling)
-- [Spela Addition](https://mattememory.skolappar.com/spela/addition)
+- [Startsida](https://mattememory.skolappar.org/)
+- [Spela Antal](https://mattememory.skolappar.org/spela/antal)
+- [Spela Taltvilling](https://mattememory.skolappar.org/spela/taltvilling)
+- [Spela Addition](https://mattememory.skolappar.org/spela/addition)
